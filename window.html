@@ -21,24 +21,30 @@
                                 <span class="direct-chat-timestamp pull-right">{{formatDate date}}</span>
                             </div>
                             <!-- /.direct-chat-info -->
-                            {{#if avatar}}
-                                <img class="direct-chat-img" src="{{avatar}}" alt="message user image"><!-- /.direct-chat-img -->{{/if}}
-                            <div class="direct-chat-text" style="{{#unless avatar}}margin: 5px 0 0 0px{{/unless}}">
-                                {{{message}}}
-                                {{#if me}}
-                                    <div class="direct-chat-checks">
-                                        {{#if sent}}
-                                            {{#if showReceived }}
-                                                <i class="icon-check {{#if viewedAll}}chat-viewed{{/if}}"></i>
-                                                {{#if receivedAll}}
-                                                    <i class="icon-check {{#if viewedAll}}chat-viewed{{/if}}"></i>
-                                                {{/if}}
-                                            {{/if}}
-                                        {{else}}
-                                            <i class="icon-clock"></i>
-                                        {{/if}}
-                                    </div>
+                            {{#if getAvatarMarkup}}
+                                {{{getAvatarMarkup userId me}}}
+                            {{else}}
+                                {{#if avatar}}
+                                <img class="direct-chat-img" src="{{avatar}}" alt="message user image"><!-- /.direct-chat-img -->
                                 {{/if}}
+                            {{/if}}
+
+                            <div class="direct-chat-text" style="{{#if notExistsAvatar avatar}}margin: 5px 0 0 0px{{/if}}">
+                            {{{message}}}
+                            {{#if me}}
+                                <div class="direct-chat-checks">
+                                    {{#if sent}}
+                                        {{#if showReceived }}
+                                            <i class="icon-check {{#if viewedAll}}chat-viewed{{/if}}"></i>
+                                            {{#if receivedAll}}
+                                                <i class="icon-check {{#if viewedAll}}chat-viewed{{/if}}"></i>
+                                            {{/if}}
+                                        {{/if}}
+                                    {{else}}
+                                        <i class="icon-clock"></i>
+                                    {{/if}}
+                                </div>
+                            {{/if}}
                             </div>
                             <!-- /.direct-chat-text -->
                         </div>

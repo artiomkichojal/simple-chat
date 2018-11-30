@@ -128,6 +128,19 @@ Template.SimpleChatWindow.onRendered(function () {
 
 
 Template.SimpleChatWindow.helpers({
+    getAvatarMarkup: function (id, me) {
+        if (SimpleChat.options.getAvatarMarkup && typeof SimpleChat.options.getAvatarMarkup === "function") {
+            return SimpleChat.options.getAvatarMarkup(id, me);
+        } else {
+            return false;
+        }
+    },
+    notExistsAvatar(avatar) {
+        if (avatar || (SimpleChat.options.getAvatarMarkup && typeof SimpleChat.options.getAvatarMarkup === "function")) {
+            return false;
+        }
+        return true;
+    },
     placeholder: function () {
         return Template.instance().data.placeholder || SimpleChat.options.texts.placeholder
     },
